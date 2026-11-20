@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://docs.calkit.org/schemas/calkit.json
+#
+# How this publication is made, so anyone can reproduce it with `calkit run`,
+# which runs only what's out of date with its code, data, or environment.
+# See https://docs.calkit.org.
+
+environments:
+  main:
+    kind: conda
+    path: env.yml
+    # Kept in the project, so each pub has its own
+    prefix: .conda-envs/main
+
+pipeline:
+  stages:
+    # Execute the publication top to bottom and write the results into
+    # index.ipynb, which is what the site shows. Reruns when the notebook,
+    # the code in src/, or the environment changes.
+    #
+    # Add a stage for anything slow, e.g., processing data or training a
+    # model, writing its results to files the notebook reads, so the
+    # notebook stays quick to rerun and the slow part only reruns when its
+    # own code or inputs change. `calkit xr scripts/process.py` adds one.
+    # Give each stage that reads another's results an input like
+    # `- from_stage_outputs: process`.
+    pub:
+      kind: quarto
+      target_path: index.ipynb
+      args:
+        - --execute
+      environment: main
+      outputs:
+        - path: _freeze/index
+          storage: git
+
+# The questions the pub answers, with answers that cite the figures and
+# numbers the pipeline makes, so they stay true as the analysis changes:
+# `calkit new question "..."` adds one, and `calkit check questions` checks
+# them. See https://docs.calkit.org/questions.
+questions: []

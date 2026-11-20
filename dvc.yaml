@@ -1,0 +1,13 @@
+stages:
+  pub:
+    cmd: calkit quarto render -e main --no-check index.ipynb -- --execute
+    deps:
+      - .calkit/notebooks/cleaned/index.ipynb
+      - .calkit/env-locks/main
+      - src/analysis
+    outs:
+      - _freeze/index:
+          cache: false
+          persist: false
+    desc: Automatically generated from the 'pub' stage in calkit.yaml. Changes
+      made here will be overwritten.

@@ -178,3 +178,8 @@ cython_debug/
 /*_files/
 
 **/*.quarto_ipynb
+
+# Calkit
+/.conda-envs/
+
+.calkit/notebooks/cleaned/index.ipynb

@@ -1,0 +1,25 @@
+schema: '2.0'
+stages:
+  pub:
+    cmd: calkit quarto render -e main --no-check index.ipynb -- --execute
+    deps:
+    - path: .calkit/env-locks/main
+      hash: md5
+      md5: 5fe2b7239702056fc72d10844a49791e.dir
+      size: 41178
+      nfiles: 5
+    - path: .calkit/notebooks/cleaned/index.ipynb
+      hash: md5
+      md5: 9434cdc0f09c90f80be22b3005fc253d
+      size: 2056
+    - path: src/analysis
+      hash: md5
+      md5: 8d40738a8f6460af99a858ec7f35e504.dir
+      size: 120
+      nfiles: 1
+    outs:
+    - path: _freeze/index
+      hash: md5
+      md5: ebbfc620c4400aa838a4d8e0648715f9.dir
+      size: 1528
+      nfiles: 1
