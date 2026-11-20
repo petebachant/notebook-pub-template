@@ -1,9 +1,10 @@
 stages:
   pub:
-    cmd: calkit xenv -n main --no-check -- quarto render index.ipynb --execute
+    cmd: calkit quarto render -e main --no-check index.ipynb -- --execute
     deps:
-      - index.ipynb
+      - .calkit/notebooks/cleaned/index.ipynb
       - .calkit/env-locks/main
+      - src/analysis
     outs:
       - _freeze/index:
           cache: false
