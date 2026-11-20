@@ -13,13 +13,16 @@
     * Feel free to edit the variables in `authors.yml`.
       - Ultimately, Publishing Team will provide you with an `authors.yml` based on the contributor roles they assign for the publication, so this isn't necessary.
 
-3. **Install Calkit and Conda**
+3. **Install Calkit and build the publication**
 
-    Install [Calkit](https://docs.calkit.org/installation/), which builds the publication, and [Miniforge](https://conda-forge.org/download/), which provides Conda. That's all: Calkit creates the publication's environment from `env.yml`, including Quarto, the first time it runs. Check everything works with:
+    Install [Calkit](https://docs.calkit.org/installation/), which builds the publication, then build it:
 
     ```bash
+    curl -LsSf install.calkit.org | sh  # Windows: see the link above
     calkit run
     ```
+
+    That's all. The first `calkit run` offers to install Conda (Miniforge) if this machine doesn't have it, then creates the publication's environment from `env.yml`, including Quarto.
 
 4. **Know where your work goes**
 

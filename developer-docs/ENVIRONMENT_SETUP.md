@@ -4,7 +4,7 @@ This document explains how the publication's environment works, for developing a
 
 ## The environment
 
-The publication runs in a Conda environment defined in `env.yml`, which includes Quarto. You don't create or activate it yourself: [Calkit](https://docs.calkit.org) creates it in `.conda-envs/main` the first time it's needed, and updates it whenever `env.yml` changes. You'll need [Calkit](https://docs.calkit.org/installation/) and [Miniforge](https://conda-forge.org/download/) installed.
+The publication runs in a Conda environment defined in `env.yml`, which includes Quarto. You don't create or activate it yourself: [Calkit](https://docs.calkit.org) creates it in `.conda-envs/main` the first time it's needed, and updates it whenever `env.yml` changes. You'll need [Calkit](https://docs.calkit.org/installation/) installed; the first `calkit run` offers to install Conda if it's missing.
 
 List the packages your publication uses in `env.yml` without pinning their versions. When Calkit creates the environment, it records the exact versions of everything installed, for every platform, in `.calkit/env-locks/`. Commit those files: anyone reproducing the publication, on any operating system, then gets the same versions you used.
 

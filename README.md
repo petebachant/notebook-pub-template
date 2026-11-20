@@ -29,13 +29,14 @@ The publication is hosted at [this URL](https://arcadia-science.github.io/[REPO-
 
 ## Reproduce
 
-With [Calkit](https://docs.calkit.org/installation/) and [Conda](https://conda-forge.org/download/) installed, run:
+Install [Calkit](https://docs.calkit.org/installation/) and run the pipeline:
 
 ```bash
+curl -LsSf install.calkit.org | sh
 calkit run
 ```
 
-This creates the environment and runs whatever is out of date. See [SETUP.qmd](pages/SETUP.qmd) for more.
+This offers to install Conda if it's missing, creates the environment, and runs whatever is out of date. See [SETUP.qmd](pages/SETUP.qmd) for more.
 
 ## Contribute
 

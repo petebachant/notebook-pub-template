@@ -4,6 +4,11 @@
 # which runs only what's out of date with its code, data, or environment.
 # See https://docs.calkit.org.
 
+# What this machine needs besides Calkit. `calkit run` checks for it, and
+# offers to install it if it's missing.
+requirements:
+  - conda
+
 environments:
   main:
     kind: conda
