@@ -59,13 +59,13 @@ Instructions are provided for:
 
 1. **Make sure the notebook outputs are up to date in `index.ipynb`**
 
-    Begin with a clean branch (no uncommitted changes). Then run the notebook from the command line using the `make execute` command.
+    Begin with a clean branch (no uncommitted changes). Then run `calkit run` (or `make execute`).
 
-    This command will update `index.ipynb` with the latest execution results. Importantly, it may generate runtime artifacts in the `_freeze/` directory.
+    This re-executes `index.ipynb` top to bottom if anything it depends on changed since it was last executed, and updates its outputs and the `_freeze/` directory. `calkit status` shows whether anything is out of date, and why.
 
-    Then run `make preview` to see how the publication is rendering. Verify that your changes appear how you intend them to appear. If not, make the necessary changes and re-run `make execute`.
+    Then run `make preview` to see how the publication is rendering. Verify that your changes appear how you intend them to appear. If not, make the necessary changes and re-run `calkit run`.
 
-    Once everything looks good, commit `index.ipynb` and all files in the `_freeze/` directory.
+    Once everything looks good, commit everything it changed, e.g., `index.ipynb`, `_freeze/`, `dvc.lock`, and `.calkit/`.
 
     Now, create a pull request to merge your branch into `main`. Once your PR is approved, merge into `main`.
 
@@ -87,6 +87,10 @@ Instructions are provided for:
 1. **Add your Google Analytics ID to `_variables.yml`**
 
     Add the Google Analytics ID provided by the Publishing Team to the `google_analytics_id` field in `_variables.yml`. This ID is used to track visits to the publication.
+
+1. **Set the publication date**
+
+    As the final change before release, set the `date` field in the front matter of `index.ipynb` (its first cell) to today's date, the actual release date. Commit and merge that change before creating the tag below, so the tagged source and the published page have the correct date rather than a placeholder or an earlier draft's date.
 
 1. **Create a tagged release of your repo**
 
@@ -120,6 +124,8 @@ In your local repo, first make sure you are on the `main` branch and pull the la
 git checkout main
 git pull
 ```
+
+As for the initial publication, the final change before tagging should set the `date` field in the front matter of `index.ipynb` to the release date of the revision.
 
 Then, create a new tag and push it to the repo. For each revision, increment the tag by 1, e.g. 'v1' -> 'v2'. Be sure to use the same format as the initial tagged release (e.g. use 'v2.0' if the initial release was 'v1.0', or 'v2' if the initial release was 'v1').
 

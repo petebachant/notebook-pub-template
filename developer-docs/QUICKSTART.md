@@ -13,13 +13,25 @@
     * Feel free to edit the variables in `authors.yml`.
       - Ultimately, Publishing Team will provide you with an `authors.yml` based on the contributor roles they assign for the publication, so this isn't necessary.
 
-3. **Install Quarto**
+3. **Install Calkit and Conda**
 
-    The publication is rendered with [Quarto](https://quarto.org/). If you don't have it installed (check with `quarto --version`), you can [install it here](https://quarto.org/docs/get-started/).
+    Install [Calkit](https://docs.calkit.org/installation/), which builds the publication, and [Miniforge](https://conda-forge.org/download/), which provides Conda. That's all: Calkit creates the publication's environment from `env.yml`, including Quarto, the first time it runs. Check everything works with:
 
-4. **Set up your environment**
+    ```bash
+    calkit run
+    ```
 
-    See the [Environment Setup Guide](ENVIRONMENT_SETUP.md) for complete instructions.
+4. **Know where your work goes**
+
+    | What | Where |
+    | --- | --- |
+    | The publication: prose, figures, and the code that makes them | `index.ipynb` |
+    | Code you import into the notebook | `src/analysis/` |
+    | Packages you use | `env.yml` (no version pins needed; Calkit locks them) |
+    | Anything slow, e.g., processing data or training a model | a stage in `calkit.yaml` that writes results the notebook reads |
+    | The questions the pub answers | `questions` in `calkit.yaml` (optional) |
+
+    Everything else, e.g., `_quarto.yml`, `_extensions/`, `_freeze/`, and `pages/`, is publishing machinery you can leave alone. See [Environment Setup](ENVIRONMENT_SETUP.md) for working with the environment.
 
 5. **Register your publication**
 
@@ -27,13 +39,13 @@
 
 6. **Create your publication**
 
-    Edit `index.ipynb` to create your publication. As you work, you can render a live preview of your changes with:
+    Edit `index.ipynb` to create your publication, e.g., in JupyterLab with `calkit xenv -- jupyter lab`. As you work, you can render a live preview of your changes with:
 
     ```bash
     make preview
     ```
 
-    Then, commit your changes to a development branch and merge them into `main` using our usual PR-based workflow.
+    When you're done with a change, run `calkit run`, which re-executes the notebook top to bottom if anything it depends on changed, so what's published comes from a clean run. Then commit your changes to a development branch and merge them into `main` using our usual PR-based workflow. A check on each pull request fails if something committed is out of date with the code that makes it.
 
     As you work, please be careful to avoid modifying any files in the following directories:
 

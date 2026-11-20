@@ -30,17 +30,17 @@ Edit `index.ipynb` to your liking.
 
 To publish your revisions, we need you to open a pull request. And in order for us to merge your pull request, here's what we'll need from you in addition to your content changes.
 
-Begin with a clean branch (no uncommitted changes). Then run the notebook from the command line:
+Begin with a clean branch (no uncommitted changes). Then reproduce the publication with your changes:
 
 ```bash
-make execute
+calkit run
 ```
 
-This command will update `index.ipynb` with the latest execution results.
+This re-executes `index.ipynb` top to bottom if anything it depends on changed, and updates its outputs.
 
-Then run `make preview` to see how the publication is rendering. Verify that your changes appear how you intend them to appear. If not, make the necessary changes and re-run `make execute`.
+Then run `make preview` to see how the publication is rendering. Verify that your changes appear how you intend them to appear. If not, make the necessary changes and re-run `calkit run`.
 
-Once everything looks good, commit `index.ipynb` and all files in the `_freeze/` directory.
+Once everything looks good, commit everything it changed, e.g., `index.ipynb`, `_freeze/`, and `dvc.lock`.
 
 Finally, submit a pull request and we'll work with you to merge your changes.
 

@@ -11,6 +11,8 @@ All the learning resources for this template can be found in `developer-docs/`.
 - [Publishing Guide](developer-docs/PUBLISHING_GUIDE.md) - How to publish your notebook publication
 - [Template Architecture](developer-docs/TEMPLATE_ARCHITECTURE.md) - Understanding the template's structure
 
+In short: your work goes in `index.ipynb` (the publication), `src/analysis/` (code it imports), and `env.yml` (packages it uses), with anything slow as a stage in `calkit.yaml`. `calkit run` reproduces it all, running only what's out of date.
+
 ---
 
 **NOTE: When ready to publish, fill in the information below, then delete this line and everything above it.**
@@ -27,7 +29,13 @@ The publication is hosted at [this URL](https://arcadia-science.github.io/[REPO-
 
 ## Reproduce
 
-Please see [SETUP.qmd](pages/SETUP.qmd).
+With [Calkit](https://docs.calkit.org/installation/) and [Conda](https://conda-forge.org/download/) installed, run:
+
+```bash
+calkit run
+```
+
+This creates the environment and runs whatever is out of date. See [SETUP.qmd](pages/SETUP.qmd) for more.
 
 ## Contribute
 
