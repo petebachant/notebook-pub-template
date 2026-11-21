@@ -25,7 +25,7 @@ This publication is a [Calkit](https://docs.calkit.org) project: [`calkit.yaml`]
 If you plan to submit a pull request, also install the [pre-commit](https://pre-commit.com/) hooks:
 
 ```bash
-calkit xenv -- pre-commit install
+calkit xenv -n main -- pre-commit install
 ```
 
 # What's next?
@@ -52,7 +52,7 @@ This will open a local instance of the publication in your default browser.
 
 ## Modify
 
-To modify or extend any analyses, open up `index.ipynb` with Jupyter (`calkit xenv -- jupyter lab`) or your favorite IDE, using the environment in `.conda-envs/main`. To preview changes as you modify the notebook, run `make preview` again and leave the command running. As you make changes to the notebook, the preview site will automatically reload.
+To modify or extend any analyses, open up `index.ipynb` with Jupyter (`calkit xenv -n main -- jupyter lab`) or your favorite IDE, using the environment in `.conda-envs/main`. To preview changes as you modify the notebook, run `make preview` again and leave the command running. As you make changes to the notebook, the preview site will automatically reload.
 
 ## Publish
 

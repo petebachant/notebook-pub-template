@@ -36,7 +36,7 @@ curl -LsSf install.calkit.org | sh
 calkit run
 ```
 
-This offers to install Conda if it's missing, creates the environment, and runs whatever is out of date. See [SETUP.qmd](pages/SETUP.qmd) for more.
+This offers to install Conda if it's missing, creates the environment, and runs whatever is out of date. Or run `make setup`, which installs Calkit if it isn't yet, then Conda and the environment, without running anything. See [SETUP.qmd](pages/SETUP.qmd) for more.
 
 ## Contribute
 

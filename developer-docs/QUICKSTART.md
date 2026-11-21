@@ -22,7 +22,7 @@
     calkit run
     ```
 
-    That's all. The first `calkit run` offers to install Conda (Miniforge) if this machine doesn't have it, then creates the publication's environment from `env.yml`, including Quarto.
+    That's all. The first `calkit run` offers to install Conda (Miniforge) if this machine doesn't have it, then creates the publication's environment from `env.yml`, including Quarto. `make setup` does the same without building, installing Calkit first if it's missing.
 
 4. **Know where your work goes**
 
@@ -42,7 +42,7 @@
 
 6. **Create your publication**
 
-    Edit `index.ipynb` to create your publication, e.g., in JupyterLab with `calkit xenv -- jupyter lab`. As you work, you can render a live preview of your changes with:
+    Edit `index.ipynb` to create your publication, e.g., in JupyterLab with `calkit xenv -n main -- jupyter lab`. As you work, you can render a live preview of your changes with:
 
     ```bash
     make preview

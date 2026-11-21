@@ -12,11 +12,11 @@ The code in `src/` is installed into the environment as the `analysis` package, 
 
 ## Running things in the environment
 
-Run any command in the environment with `calkit xenv --`, e.g.:
+Run any command in the environment with `calkit xenv -n main --`, e.g.:
 
 ```bash
-calkit xenv -- jupyter lab
-calkit xenv -- python scripts/process.py
+calkit xenv -n main -- jupyter lab
+calkit xenv -n main -- python scripts/process.py
 ```
 
 To use the environment in your editor, e.g., VS Code, select the Python interpreter in `.conda-envs/main`.
@@ -24,7 +24,7 @@ To use the environment in your editor, e.g., VS Code, select the Python interpre
 Optionally, install the [pre-commit](https://pre-commit.com/) hooks:
 
 ```bash
-calkit xenv -- pre-commit install
+calkit xenv -n main -- pre-commit install
 ```
 
 Test your setup with `make preview`. Your pub will open up in your browser.
