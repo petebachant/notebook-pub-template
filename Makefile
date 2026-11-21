@@ -2,21 +2,21 @@
 
 .PHONY: lint
 lint:
-	calkit xenv -- ruff check --exit-zero .
-	calkit xenv -- ruff format --check .
+	calkit xenv -n main -- ruff check --exit-zero .
+	calkit xenv -n main -- ruff format --check .
 
 .PHONY: format
 format:
-	calkit xenv -- ruff check --fix .
-	calkit xenv -- ruff format .
+	calkit xenv -n main -- ruff check --fix .
+	calkit xenv -n main -- ruff format .
 
 .PHONY: pre-commit
 pre-commit:
-	calkit xenv -- pre-commit run --all-files
+	calkit xenv -n main -- pre-commit run --all-files
 
 .PHONY: test
 test:
-	calkit xenv -- pytest -v .
+	calkit xenv -n main -- pytest -v .
 
 .PHONY: execute
 execute:
@@ -26,14 +26,14 @@ execute:
 
 .PHONY: preview
 preview:
-	calkit xenv -- quarto preview
+	calkit xenv -n main -- quarto preview
 
 .PHONY: execute-demo
 execute-demo:
 	# This command is only necessary when changes are made to the demo notebook
 	# for development of the notebook pub template.
-	calkit xenv -- quarto render examples/demo.ipynb --execute
+	calkit xenv -n main -- quarto render examples/demo.ipynb --execute
 
 .PHONY: update-theme
 update-theme:
-	calkit xenv -- quarto update extension Arcadia-Science/notebook-pub-theme --no-prompt
+	calkit xenv -n main -- quarto update extension Arcadia-Science/notebook-pub-theme --no-prompt
