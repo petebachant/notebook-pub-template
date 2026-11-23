@@ -1,0 +1,57 @@
+# Temporary: checks the template end to end on Windows. Not for merging.
+on:
+  push:
+    branches:
+      - windows-test
+  workflow_dispatch:
+
+name: Windows test
+
+jobs:
+  run:
+    strategy:
+      fail-fast: false
+      matrix:
+        conda: [preinstalled, none]
+    runs-on: windows-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Miniforge
+        if: matrix.conda == 'preinstalled'
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+
+      - name: Install Calkit as the docs say
+        run: |
+          powershell -ExecutionPolicy ByPass -c "irm install-ps1.calkit.org | iex"
+          "$env:USERPROFILE\.local\bin" | Out-File -Append -Encoding utf8 $env:GITHUB_PATH
+
+      - name: Show what's installed
+        run: |
+          calkit --version
+          Get-Command conda -ErrorAction SilentlyContinue
+          Get-Command quarto -ErrorAction SilentlyContinue
+          Get-Command make -ErrorAction SilentlyContinue
+
+      - name: calkit run
+        run: |
+          calkit run
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: calkit run again, which should do nothing
+        run: |
+          Measure-Command { calkit run | Out-Default }
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Check that the tree is clean
+        run: |
+          calkit status
+          git status --porcelain
+          git diff --stat
+          if (git status --porcelain) { exit 1 }
