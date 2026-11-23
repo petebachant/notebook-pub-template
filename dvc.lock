@@ -5,8 +5,8 @@ stages:
     deps:
     - path: .calkit/env-locks/main
       hash: md5
-      md5: 8d0002723db2b19c1f3e4c06ad0f8252.dir
-      size: 40856
+      md5: 53ed6430408358842d60269bad2342b7.dir
+      size: 41209
       nfiles: 5
     - path: .calkit/notebooks/cleaned/index.ipynb
       hash: md5
@@ -20,6 +20,6 @@ stages:
     outs:
     - path: _freeze/index
       hash: md5
-      md5: 23598eb542b0240b0976ae2a33bb3db2.dir
+      md5: ebbfc620c4400aa838a4d8e0648715f9.dir
       size: 1528
       nfiles: 1
