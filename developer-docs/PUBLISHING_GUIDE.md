@@ -88,6 +88,10 @@ Instructions are provided for:
 
     Add the Google Analytics ID provided by the Publishing Team to the `google_analytics_id` field in `_variables.yml`. This ID is used to track visits to the publication.
 
+1. **Set the publication date**
+
+    As the final change before release, set the `date` field in the front matter of `index.ipynb` (its first cell) to today's date, the actual release date. Commit and merge that change before creating the tag below, so the tagged source and the published page have the correct date rather than a placeholder or an earlier draft's date.
+
 1. **Create a tagged release of your repo**
 
     Follow the instructions on Notion [here](https://www.notion.so/arcadiascience/How-to-archive-a-GitHub-repository-on-Zenodo-at-time-of-publication-1cd6202af5bb4b5ba8464caaba8e9bed) to link your repo to Zenodo and create a new tagged release. (Note: this step is the same one you would follow for a "normal" non-notebook pub.)
@@ -120,6 +124,8 @@ In your local repo, first make sure you are on the `main` branch and pull the la
 git checkout main
 git pull
 ```
+
+As for the initial publication, the final change before tagging should set the `date` field in the front matter of `index.ipynb` to the release date of the revision.
 
 Then, create a new tag and push it to the repo. For each revision, increment the tag by 1, e.g. 'v1' -> 'v2'. Be sure to use the same format as the initial tagged release (e.g. use 'v2.0' if the initial release was 'v1.0', or 'v2' if the initial release was 'v1').
 
