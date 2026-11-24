@@ -48,6 +48,13 @@
     make preview
     ```
 
+    Numbers in the text should come from the analysis rather than being typed in, so they can't drift from it:
+
+    - **A number the notebook computes:** show it with an inline expression from a variable an earlier cell defines, e.g., `` `{python} f"{r2:.2f}"` ``. Inline expressions are evaluated in order, so the cell has to come before the text.
+    - **A number quoted from a reference,** e.g., a parameter you reuse or a result you compare against: record it with `calkit new ref-value <key> <name> --value 0.1 --page 4 --context "the passage it's in"`, which checks it against the reference's PDF, then show it with `{{< ckrefval <key> <name> >}}`, and cite the reference as usual.
+
+    `calkit check repro -c numbers` lists numbers typed into the text with nothing behind them, and `-c refvals` checks quoted values against their references. Calkit adds `_extensions/calkit/` and `.calkit/reference-values/` when you quote a value; commit them.
+
     When you're done with a change, run `calkit run`, which re-executes the notebook top to bottom if anything it depends on changed, so what's published comes from a clean run. Then commit your changes to a development branch and merge them into `main` using our usual PR-based workflow. A check on each pull request fails if something committed is out of date with the code that makes it.
 
     As you work, please be careful to avoid modifying any files in the following directories:
